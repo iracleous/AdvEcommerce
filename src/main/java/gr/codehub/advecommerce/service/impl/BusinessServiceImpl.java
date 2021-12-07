@@ -4,7 +4,6 @@ import gr.codehub.advecommerce.dto.CustomerDto;
 import gr.codehub.advecommerce.exception.CustomerException;
 import gr.codehub.advecommerce.model.Customer;
 import gr.codehub.advecommerce.repository.CustomerRepository;
-import gr.codehub.advecommerce.repository.impl.CustomerRepositoryImpl;
 import gr.codehub.advecommerce.service.BusinessService;
 import lombok.AllArgsConstructor;
 
@@ -24,7 +23,7 @@ public class BusinessServiceImpl implements BusinessService {
         if (customerDto.getEmail().contains("@gmail.com"))
             throw new CustomerException("No gmail customers allowed");
 
-       Customer customer =  customerRepository.save(customerDto.getCustomer());
+       Customer customer =  customerRepository.save(customerDto.obtainCustomer());
         return new CustomerDto(customer);
     }
 

@@ -23,7 +23,7 @@ public class CustomerDto {
         dateOfBirth = customer.getDateOfBirth();
     }
 
-    public Customer getCustomer(){
+    public Customer obtainCustomer(){
         Customer customer = new Customer();
         customer.setId(customerId);
         customer.setName(fullName);

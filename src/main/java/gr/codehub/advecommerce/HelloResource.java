@@ -8,9 +8,9 @@ import gr.codehub.advecommerce.repository.impl.CustomerRepositoryImpl;
 import gr.codehub.advecommerce.service.BusinessService;
 import gr.codehub.advecommerce.service.impl.BusinessServiceImpl;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.time.LocalDate;
 import java.util.List;
 
 @Path("/")
@@ -30,11 +30,30 @@ private BusinessService businessService = new BusinessServiceImpl(customerReposi
     }
 
     @GET
-    @Path("/customer")
+    @Path("/customer/{customerId}")
     @Produces("text/json")
-    public CustomerDto getCustomer(){
-        int customerId = 7;
+    public CustomerDto getCustomer(@PathParam("customerId") int customerId){
+
         return businessService.getCustomerById(customerId);
+    }
+
+
+
+    @Path("/customer")
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces("text/json")
+    public CustomerDto addCustomer(@FormParam("fullName") String fullName,
+                                   @FormParam("email") String email,
+                                   @FormParam("dateOfBirth") String dateOfBirth) throws CustomerException {
+
+
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setFullName(fullName);
+        customerDto.setEmail(email);
+        customerDto.setDateOfBirth(LocalDate.parse(dateOfBirth));
+
+        return businessService.createCustomer(customerDto);
     }
 
 }
