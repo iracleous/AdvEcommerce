@@ -2,7 +2,6 @@ package gr.codehub.advecommerce;
 
 import gr.codehub.advecommerce.dto.CustomerDto;
 import gr.codehub.advecommerce.exception.CustomerException;
-import gr.codehub.advecommerce.model.Customer;
 import gr.codehub.advecommerce.repository.CustomerRepository;
 import gr.codehub.advecommerce.repository.impl.CustomerRepositoryImpl;
 import gr.codehub.advecommerce.service.BusinessService;
@@ -14,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Path("/")
-public class HelloResource {
+public class CustomerResource {
 
 private CustomerRepository customerRepository= new CustomerRepositoryImpl();
 private BusinessService businessService = new BusinessServiceImpl(customerRepository);
@@ -39,6 +38,16 @@ private BusinessService businessService = new BusinessServiceImpl(customerReposi
 
 
 
+    @GET
+    @Path("/customers")
+    @Produces("text/json")
+    public List<CustomerDto> getCustomer( ){
+        return businessService.getCustomerList();
+    }
+
+
+
+
     @Path("/customer")
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -55,6 +64,12 @@ private BusinessService businessService = new BusinessServiceImpl(customerReposi
 
         return businessService.createCustomer(customerDto);
     }
+
+
+
+
+
+
 
 }
 

@@ -7,7 +7,9 @@ import gr.codehub.advecommerce.repository.CustomerRepository;
 import gr.codehub.advecommerce.service.BusinessService;
 import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class BusinessServiceImpl implements BusinessService {
@@ -29,7 +31,10 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public List<CustomerDto> getCustomerList() {
-        return null;
+
+       List<Customer> customers =  customerRepository.findAll().orElse( new ArrayList<>());
+       return customers.stream().map(CustomerDto::new).collect(Collectors.toList());
+
     }
 
     @Override

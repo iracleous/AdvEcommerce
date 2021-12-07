@@ -4,10 +4,12 @@ import gr.codehub.advecommerce.model.Customer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
+@XmlRootElement
 public class CustomerDto {
 
     private int customerId;

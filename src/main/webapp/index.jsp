@@ -7,7 +7,7 @@
 <body>
 <h1><%= "Hello World!" %>
 </h1>
-<img src="/images/arcaic.png">
+<img src="./images/arcaic.png"  width="100px"  height="50px">
 
 <br/>
 
@@ -23,6 +23,9 @@
 
 <hr>
 <h1> Customer List</h1>
+
+<button onclick="window.open('http://localhost:8080/AdvEcommerce-1.0-SNAPSHOT/api/customers','_self')"> Press to see the customers list</button>
+
 
 </body>
 </html>
