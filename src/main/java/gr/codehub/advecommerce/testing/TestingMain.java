@@ -22,6 +22,13 @@ public class TestingMain {
         em.getTransaction().commit();
         System.out.println("Id = "+customer.getId());
 
+        //////////////////////////////////////
+
+        Customer customerFromDb = em.find(Customer.class, 1);
+        System.out.println(customerFromDb);
+
+
+
 
         em.close();
         JpaUtil.shutdown();

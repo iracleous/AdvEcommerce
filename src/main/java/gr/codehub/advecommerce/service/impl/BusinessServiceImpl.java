@@ -43,4 +43,15 @@ public class BusinessServiceImpl implements BusinessService {
 
         return new CustomerDto( customerRepository.findById(customerId).orElse( new Customer()) );
     }
+
+    @Override
+    public CustomerDto updateCustomer(int customerId, CustomerDto customerDto) throws CustomerException {
+
+        return new CustomerDto(customerRepository.update(customerId, customerDto.obtainCustomer()));
+    }
+
+    @Override
+    public boolean deleteCustomer(int customerId) throws CustomerException {
+        return customerRepository.delete(customerId);
+    }
 }

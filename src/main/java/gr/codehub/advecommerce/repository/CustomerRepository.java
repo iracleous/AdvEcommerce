@@ -5,7 +5,7 @@ import gr.codehub.advecommerce.model.Customer;
 import java.util.List;
 import java.util.Optional;
 
-public interface CustomerRepository {
+public interface CustomerRepository   {
     //CRUD operations
     Customer save(Customer customer);
     Optional<Customer> findById(int customerId);

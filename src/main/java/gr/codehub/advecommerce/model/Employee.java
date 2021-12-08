@@ -3,21 +3,18 @@ package gr.codehub.advecommerce.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
-public class Customer {
-
+public class Employee {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String name;
-    private String email;
-    private String password;
-    private LocalDate dateOfBirth;
+    private String department;
+    private String speciality;
 
-
-    @ManyToOne
-    private Employee employee;
+    @OneToMany(mappedBy = "employee")
+    private List<Customer> customers;
 }

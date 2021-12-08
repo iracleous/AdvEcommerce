@@ -13,6 +13,7 @@ public interface BusinessService {
 
     CustomerDto getCustomerById(int customerId);
 
+    CustomerDto updateCustomer(int customerId, CustomerDto customerDto) throws CustomerException;
 
-
+    boolean deleteCustomer(int customerId ) throws CustomerException;
 }
