@@ -1,0 +1,58 @@
+
+<html>
+<head>
+    <title>Title</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id ="Results"></div>
+
+<script>
+
+
+    $(document).ready(function () {
+        if ($("#Results").length != 0) {
+            loadData()
+        }
+
+    });
+
+function loadData(){
+
+    urlAPI = "http://localhost:8080/AdvEcommerce-1.0-SNAPSHOT/api/customer";
+    method = "get";
+    contentType = 'application/json';
+
+    $.ajax(
+        {
+            url: urlAPI,
+            method: method
+        })
+    .done(result => {
+        resultData = "<table  class='table' border='1px'   cellpadding='2' cellspacing='2'>";
+
+        result.forEach(customer => resultData += ('<tr>'
+            + '<td>'+customer.customerId + '</td>'
+            + '<td>'+customer.fullName + '</td>'
+            + '<td>'+customer.email + '</td>'
+            + '<td>' + customer.dateOfBirth + '</td>'
+            + '</tr>'));
+
+        resultData += '</table>';
+        $("#Results").html(resultData);
+
+    })
+    .fail(failure => {
+        console.log('error in communication');
+        console.log(JSON.stringify(failure));
+    });
+}
+
+</script>
+
+
+
+</body>
+</html>

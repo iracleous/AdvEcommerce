@@ -4,8 +4,7 @@
 <head>
     <title>JSP - Hello World</title>
     <link rel="stylesheet" href="./css/mycss.css">
-
-
+    <script src="./js/script.js"></script>
 
 </head>
 <body>
@@ -15,20 +14,15 @@
 
 <br/>
 
-<h1> New Customer</h1>
+<ul>
+    <li><a href="./createCustomer.jsp">Create customer</a> </li>
+    <li><a href="./listCustomers.html">list customers</a></li>
+    <li><a href="#">select customer</a></li>
+    <li><a href="#">update customer</a></li>
+    <li><a href="#">delete customer</a></li>
 
-<form action="http://localhost:8080/AdvEcommerce-1.0-SNAPSHOT/api/customer" method="post">
-    <input type="text" name = "fullName" placeholder="fullName"/> <br />
-    <input type="email" name = "email" placeholder="email"/> <br />
-    <input type="date" name = "dateOfBirth" placeholder="dateOfBirth"/> <br />
+</ul>
 
-    <input type="submit" />
-</form>
-
-<hr>
-<h1> Customer List</h1>
-
-<button onclick="window.open('http://localhost:8080/AdvEcommerce-1.0-SNAPSHOT/api/customers','_self')"> Press to see the customers list</button>
 
 
 </body>
