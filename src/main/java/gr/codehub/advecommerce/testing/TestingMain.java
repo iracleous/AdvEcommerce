@@ -17,9 +17,9 @@ public class TestingMain {
 
 
         System.out.println("Id = "+customer.getId());
-        em.getTransaction().begin();
+
         em.persist(customer);
-        em.getTransaction().commit();
+
         System.out.println("Id = "+customer.getId());
 
         //////////////////////////////////////

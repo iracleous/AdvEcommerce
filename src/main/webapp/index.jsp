@@ -21,6 +21,8 @@
     <li><a href="#">update customer</a></li>
     <li><a href="#">delete customer</a></li>
 
+    <li><a href="./api/test">delete customer</a></li>
+
 </ul>
 
 

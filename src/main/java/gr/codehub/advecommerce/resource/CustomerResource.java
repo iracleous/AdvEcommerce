@@ -1,12 +1,20 @@
-package gr.codehub.advecommerce;
+package gr.codehub.advecommerce.resource;
 
 import gr.codehub.advecommerce.dto.CustomerDto;
+import gr.codehub.advecommerce.ejb.CustomerEjb;
 import gr.codehub.advecommerce.exception.CustomerException;
+import gr.codehub.advecommerce.model.Employee;
 import gr.codehub.advecommerce.repository.CustomerRepository;
 import gr.codehub.advecommerce.repository.impl.CustomerRepositoryImpl;
 import gr.codehub.advecommerce.service.BusinessService;
 import gr.codehub.advecommerce.service.impl.BusinessServiceImpl;
 
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.*;
+import javax.transaction.NotSupportedException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
@@ -81,6 +89,57 @@ private BusinessService businessService = new BusinessServiceImpl(customerReposi
 
         return businessService.deleteCustomer(customerId);
     }
+
+
+    @EJB
+    private CustomerEjb ejb;
+
+
+
+    @GET
+    @Path("test")
+    public int createCust(){
+        int x= 0;
+
+        try {
+            x=ejb.doAction();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        x++;
+        return x;
+}
+
+
+//    @PersistenceContext(unitName = "Persistence")
+//    private EntityManager entityManager;
+//
+//    @Resource
+//    private UserTransaction userTransaction;
+//
+//
+//    public int doAction() throws Exception{
+//            //SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
+//
+//        int id =0;
+//        Employee employee = new Employee();
+//        employee.setDepartment("ddd3");
+//        employee.setName("gg3");
+//
+//
+//        userTransaction.begin();
+//        entityManager.persist(employee);
+//        userTransaction.commit();
+//
+//
+//
+//
+//
+//        id = employee.getId();
+//
+//        return id;
+//
+//    }
 
 
 
